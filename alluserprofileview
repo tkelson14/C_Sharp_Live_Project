@@ -1,0 +1,84 @@
+
+@{
+    ViewBag.Title = "AllUserProfile";
+}
+
+
+<div class="container defaultContainer">
+    <div class="card mt-5">
+        <div class="card-header" id="card-header-bg">
+            <div class="row">
+                <div class="col-sm">
+                    <h3>User Profile</h3>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            
+                @{ Html.RenderAction("_AllUserProfile", "Users"); }
+            
+
+        </div>
+    </div>
+</div>
+
+
+@using ManagementPortal.Common
+@using ManagementPortal.Models
+@using Microsoft.AspNet.Identity
+@model PagedList.IPagedList<ManagementPortal.Models.ApplicationUser>
+@using PagedList.Mvc;
+
+
+@{
+    //var currentUser = User.Identity.GetUserId();
+}
+
+        <div class="card card-shadow mb-3">
+            <div class="card-header">
+                @using (Html.BeginForm("UserProfile", "Users", FormMethod.Get))
+                {
+                    <p>
+                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                        <input type="submit" value="Search" />
+                    </p>
+                }
+            </div>
+
+            <br />
+
+            <div class="card-body card-columns">
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    if (!Model[i].Suspended)
+                    {
+                        <div class="card" id="userRow_@i">
+                            @*<div>
+                                    @Html.DisplayNameFor(model => model.ProfilePicture)
+                                </div>*@
+                            <div>
+                                @Html.DisplayFor(modelItem => Model[i].UserName)
+                            </div>
+                            <div>
+                                @Html.DisplayFor(modelItem => Model[i].FirstName)
+                            </div>
+                            <div>
+                                @Html.DisplayFor(modelItem => Model[i].LastName)
+                            </div>
+                            <div>
+                                @Html.DisplayFor(modelItem => Model[i].Email)
+                            </div>
+                            <div>
+                                <a href="tel:+@Model[i].PhoneNumber"> @Html.DisplayFor(modelItem => Model[i].PhoneNumber)</a>
+                            </div>
+                        </div>
+                    }
+                }
+
+                <br />
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+              new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            </div>
+        </div>

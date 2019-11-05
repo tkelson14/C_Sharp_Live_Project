@@ -1,0 +1,24 @@
+
+View
+<div class="col-3" align="left">
+            @*Button that shows current user page view*@
+            @*Formatting for this view only shows jobs, function for schedules commented out in controller*@
+            @using (Html.BeginForm("Index", "Jobs", FormMethod.Get))
+            {
+                <p>
+                    @Html.Hidden("SearchString", "MyJobs")
+                    <input type="submit" value="MyJobs" />
+                </p>
+            }
+        </div>
+		
+Controller
+if (searchString == "MyJobs")
+            {
+                if (userId != null)
+                {
+                    jobs = db.Jobs.Include(jd => jd.Details).Where(j => j.Manager.Id == userId);
+                    //schedule = db.Schedules.Include(s => s.Job.Details).Where(s => s.Person.Id == userId).Where(s => s.Job.Active == true);
+               
+                }
+            }

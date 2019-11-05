@@ -1,0 +1,4 @@
+Model
+
+//Set DisplayName with first name and last name
+        public string DisplayName { get => FirstName + " " + LastName; internal set { FirstName = value; LastName = value; } }

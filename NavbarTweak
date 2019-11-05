@@ -1,0 +1,11 @@
+Changed layout to conform with other icons and added tool tip
+					New
+					<li>
+                        <a href="#" title="Print" onclick="window.print()"> <i class="fa fa-print"></i><text class="nav-title">Print</text></a>
+                    </li>
+					Old
+					<li>
+                        <div onclick="window.print()">
+                            <i class="fa fa-print" aria-hidden="true" href="#"></i><text class="nav-sub-title" title="nav-title">Print</text>
+                        </div>
+                    </li>

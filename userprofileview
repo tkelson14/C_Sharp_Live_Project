@@ -1,0 +1,59 @@
+
+@{
+    ViewBag.Title = "UserProfile";
+}
+
+
+    <div class="container defaultContainer">
+        <div class="card mt-5">
+            <div class="card-header" id="card-header-bg">
+                <div class="row">
+                    <div class="col-sm">
+                        <h3>User Profile</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                @{ Html.RenderAction("_UserProfile", "Users"); }
+            </div>
+        </div>
+    </div>
+
+
+@using ManagementPortal.Common
+@using ManagementPortal.Models
+@using Microsoft.AspNet.Identity
+@model PagedList.IPagedList<ManagementPortal.Models.ApplicationUser>
+@using PagedList.Mvc;
+@using Microsoft.AspNet.Identity.EntityFramework
+
+
+@{
+
+    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+    var currentUser = manager.FindById(User.Identity.GetUserId());
+
+}
+
+<div class="card card-shadow mb-3">
+    <div class="card-header">
+        @Html.DisplayName(currentUser.UserName)
+        <div class="card-body">
+            <div>
+                <div>
+                    @Html.DisplayName(currentUser.FirstName)
+                </div>
+                <div>
+                    @Html.DisplayName(currentUser.LastName)
+                </div>
+                <div>
+                    @Html.Raw(currentUser.Email)
+                </div>
+                <div>
+                    @Html.DisplayName(currentUser.UserRole)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,44 @@
+CSS
+#left-half {
+	position: relative;
+	left: 0px;
+	/*float:left;*/
+	grid-column:1;
+	width: 50%;
+}
+
+#right-half {
+    position: relative;
+    /*float: right;*/
+    grid-column: 2;
+    left: 50%;
+    right: 0;
+    width: 300px;
+    align-items: center;
+    border-radius: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #908AB6;
+    padding:0px;
+}
+
+Layout
+<div id="header-nav">
+            <header class="container">
+                @*<img id="site-header">*@
+                <div class="card-img-overlay" id="left-half">
+                    <a id="header-title" href="@Url.Action("Dashboard","Home")"><img src="~/Content/images/newlogo.png" alt="" /></a>
+                </div>
+                @*****************Header dropdown for logged in user****************@
+                <div class="card-img-overlay d-flex justify-content-center" id="right-half">
+                    <div class="dropdown textcolor">
+                        <button class="navbar-toggler btn" type="button" data-toggle="dropdown">
+                            Welcome @ViewData["DisplayName"] <img id="ProfileImg" src="@Url.Action("Photo", "Manage" , new { UserId=User.Identity.GetUserId() })" height="48" width="48" />
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @Html.Partial("_LoginPartial")
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>

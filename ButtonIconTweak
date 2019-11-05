@@ -1,0 +1,13 @@
+Three icons all the same changed two to be more related to item
+
+View Layout
+<div id="open-menu">
+                    <i class="fa fa-forward"></i>
+                </div>
+				
+View Anchor Button
+case ButtonType.Details:
+        <a type="button" class="btn btn-sm buttonbackground" href="@Url.Action(Model.Action, new { id = Model.RouteId })">
+            <span><i class="fa fa-info-circle"></i></span> //changed from list to info-circle
+        </a>
+        break;

@@ -1,0 +1,112 @@
+New Create format
+<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="addShiftTimes" value="Create" class="btn-base btn-w-100px" />
+                @Html.Partial(AnchorButtonGroupHelper.PartialView, AnchorButtonGroupHelper.GetBack())
+            </div>
+        </div>
+		
+Old Create Pages
+ShiftTimes
+<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+Schedules
+<a type="button" class="btn btn-sm btn-primary" href="@Url.Action("Index")">
+    <span>
+        <i class="fa fa-list"></i> Back to the List
+    </span>
+</a>
+<div class="form-group">
+            <div class="col-md-offset-2 col-md-10 createBtn">
+                <input type="submit" value="Create" class="btn btn-default darkbluetext" id="invalidCheck"/>
+            </div>
+        </div>
+    </div>
+}
+
+@Html.Partial(AnchorButtonGroupHelper.PartialView, AnchorButtonGroupHelper.GetBack())
+Product
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+PersonalProfiles
+<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" /> | |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+Jobsites
+<div class="form-group">
+            @*ADDED "createBtn"*@
+            <div class="col-md-offset-2 col-md-10 createBtn">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.Partial(AnchorButtonGroupHelper.PartialView, AnchorButtonGroupHelper.GetBack())
+</div>
+Jobs
+<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" id="addShiftTimes" value="Create" class="btn-base btn-w-100px" />
+        </div>
+    </div>
+</div>
+        }
+
+
+<div>
+    @Html.Partial(AnchorButtonGroupHelper.PartialView, AnchorButtonGroupHelper.GetBack())
+</div>
+JobAction
+<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+CompanyNews
+<div class="form-group">
+        @*ADDED "createBtn"*@
+        <div class="col-md-offset-2 col-md-10 createBtn">
+            <input type="submit" value="Create" class="btn btn-default darkbluetext" id="submit" />
+        </div>
+    </div>
+ChatMessages
+    <div>
+        @Html.Partial(AnchorButtonGroupHelper.PartialView, AnchorButtonGroupHelper.GetBack())
+    </div>
+	<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn buttonbackground" />
+            </div>
+        </div>
+    </div>
+}
+
+
+    <div>
+        @Html.ActionLink("Back to the List", "Index", null, new { @class = "btn btn-sm buttonbackground" })
+    </div>

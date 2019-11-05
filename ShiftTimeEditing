@@ -1,0 +1,81 @@
+//if (shiftTime == null)
+            {
+                shiftTime = new ShiftTime();
+                shiftTime.ShiftTimeId = job.JobIb;
+                db.ShiftTimes.Add(shiftTime);
+
+                db.Entry(shiftTime).State = EntityState.Added;
+                db.SaveChanges();
+            }
+            else
+            if (ModelState.IsValid)
+            {
+                shiftTime.Default = modelShiftTime.Default;
+                shiftTime.Monday = modelShiftTime.Monday;
+                shiftTime.Tuesday = modelShiftTime.Tuesday;
+                shiftTime.Wednesday = modelShiftTime.Wednesday;
+                shiftTime.Thursday = modelShiftTime.Thursday;
+                shiftTime.Friday = modelShiftTime.Friday;
+                shiftTime.Saturday = modelShiftTime.Saturday;
+                shiftTime.Sunday = modelShiftTime.Sunday;
+                db.Entry(shiftTime).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+			
+Controller			
+[HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "JobIb,JobTitle,JobType,Active,Location,Manager,Details")] Job modelJob,
+            [Bind(Include = "ShiftTimeId,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,Default")] ShiftTime modelShiftTime)
+        {
+            modelShiftTime.ShiftTimeId = modelJob.JobIb;
+            Job job = db.Jobs.Find(modelJob.JobIb);
+
+            JobOther jobOther = db.JobOthers.Find(modelJob.Details.JobOtherId);
+
+            ShiftTime shiftTime = db.ShiftTimes.Find(modelShiftTime.ShiftTimeId);
+
+
+            if (jobOther == null)
+            {
+                jobOther = new JobOther();
+                jobOther.Job = job;
+                jobOther.Note = modelJob.Details.Note;
+                db.JobOthers.Add(jobOther);
+
+                db.Entry(job.Details).State = EntityState.Added;
+                db.SaveChanges();
+            }
+            else
+            {
+                job.Details.Note = modelJob.Details.Note;
+                db.Entry(job.Details).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            if (shiftTime == null)
+            {
+                shiftTime = new ShiftTime();
+                shiftTime.ShiftTimeId = job.JobIb;
+                db.ShiftTimes.Add(shiftTime);
+
+                db.Entry(shiftTime).State = EntityState.Added;
+                db.SaveChanges();
+            }
+            else
+            {
+                db.Entry(shiftTime).State = EntityState.Added;
+                db.SaveChanges();
+            }
+			
+			
+			
+			
+Edit
+<div class="form-group">
+        @Html.LabelFor(model => model.WeeklyShifts, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.WeeklyShifts.Default, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.Partial("_shiftTimeModal", Model.WeeklyShifts) //change from new to show data from database
+            <button type="button" class="btn-base btn-w-100px" data-toggle="modal" data-target="#ShiftTimeModal">Edit</button>
+        </div>
+    </div>`

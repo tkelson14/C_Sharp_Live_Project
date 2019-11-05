@@ -1,0 +1,15 @@
+Chat Edit 
+		View New
+		<div class="form-group">
+            <div class="col-md-offset-2 col-md-10btn-edit">
+                @Html.Partial(AnchorButtonGroupHelper.PartialView, AnchorButtonGroupHelper.GetSave())
+                @Html.Partial(AnchorButtonGroupHelper.PartialView, AnchorButtonGroupHelper.GetBack())
+            </div>
+        </div>
+		View Old
+<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
